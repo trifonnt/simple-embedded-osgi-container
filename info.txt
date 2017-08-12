@@ -2,6 +2,8 @@
    How To Embed OSGi
    by Neil Bartlett
  + http://njbartlett.name/2011/07/03/embedding-osgi.html
+   OSGi felix: Sharing a class between the host application and a bundle possible?
+ + https://stackoverflow.com/questions/1012897/osgi-felix-sharing-a-class-between-the-host-application-and-a-bundle-possible
 
    Java class which embeds OSGi container
  - https://github.com/Indoqa/osgi-embedded/blob/master/indoqa-osgi-embedded-container/src/main/java/com/indoqa/osgi/embedded/container/EmbeddedOSGiContainer.java
