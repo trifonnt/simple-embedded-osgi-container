@@ -5,5 +5,17 @@
    OSGi felix: Sharing a class between the host application and a bundle possible?
  + https://stackoverflow.com/questions/1012897/osgi-felix-sharing-a-class-between-the-host-application-and-a-bundle-possible
 
+
+   OSGi and servlets can work together
+ - https://dzone.com/articles/osgi-and-servlets-can-work
+
+   How to use servlet with osgi
+ - https://stackoverflow.com/questions/16313650/how-to-use-servlet-with-osgi
+
+ 
    Java class which embeds OSGi container
  - https://github.com/Indoqa/osgi-embedded/blob/master/indoqa-osgi-embedded-container/src/main/java/com/indoqa/osgi/embedded/container/EmbeddedOSGiContainer.java
+ 
+ 
+# Request URLs
+ - http://127.0.1.1:8080/admin/adempiereMonitorOSGI/test

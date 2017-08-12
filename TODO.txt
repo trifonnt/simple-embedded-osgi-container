@@ -1,0 +1,5 @@
+-01) Fix error when ADempiere starts
+$ cd /home/vagrant/workspace-eclipse/adempiere/adempiere/Adempiere/utils
+$ ./RUN_Server2.sh > trifon-1.log &
+
+java.util.ServiceConfigurationError: org.osgi.framework.launch.FrameworkFactory: Provider org.apache.felix.framework.FrameworkFactory not a subtype

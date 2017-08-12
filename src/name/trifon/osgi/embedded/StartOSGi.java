@@ -13,6 +13,10 @@ import org.osgi.framework.Constants;
 import org.osgi.framework.launch.Framework;
 import org.osgi.framework.launch.FrameworkFactory;
 
+// This is Apache Felix specific class!
+//import org.apache.felix.framework.FrameworkFactory;
+
+
 public class StartOSGi {
 
 	public static void main(String[] args) {
