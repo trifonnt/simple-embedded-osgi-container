@@ -19,14 +19,23 @@ public class StartOSGi {
 		// Start OSGi environment
 		FrameworkFactory frameworkFactory = ServiceLoader.load(FrameworkFactory.class)
 				.iterator().next();
-		Map<String, String> osgiConfig = new HashMap<>();
+		Map<String, String> osgiConfigMap = new HashMap<>();
 
-		// Exposing Application Packages
-		osgiConfig.put(Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA, "org.adempiere,org.compiere,org.eevolution");
+		// Expose Application Packages
+		osgiConfigMap.put(Constants.FRAMEWORK_SYSTEMPACKAGES_EXTRA, "org.adempiere,org.compiere,org.eevolution");
+
+		// Control where OSGi stores its persistent data:
+//		osgiConfigMap.put(Constants.FRAMEWORK_STORAGE, "/Users/neil/osgidata");
+
+		// Request OSGi to clean its storage area on startup
+		osgiConfigMap.put(Constants.FRAMEWORK_STORAGE_CLEAN, "true");
+
+		// Provide the Java 1.5 execution environment
+//		osgiConfigMap.put(Constants.FRAMEWORK_EXECUTIONENVIRONMENT, "J2SE-1.5");
 
 		//TODO: Add some osgiConfig properties
 		Framework osgiFramework = null;
-		osgiFramework = frameworkFactory.newFramework( osgiConfig );
+		osgiFramework = frameworkFactory.newFramework( osgiConfigMap );
 
 		try {
 			osgiFramework.start();
@@ -57,12 +66,25 @@ public class StartOSGi {
 		// Start bundles
 		for (Bundle bundle : installedBundles) {
 			try {
-				bundle.start();
+				// Check if this is fragment bundle
+				if (bundle.getHeaders().get(Constants.FRAGMENT_HOST) == null) {
+					bundle.start();
+				}
 			} catch (BundleException e) {
 				e.printStackTrace();
 				return;
 			}
 		}
+
+		// When we want to shutdown OSGi framework
+		try {
+			osgiFramework.waitForStop(0);
+		} catch (InterruptedException ex) {
+			ex.printStackTrace();
+		} finally {
+			System.exit(0);
+		}
+
 	}
 
 }
